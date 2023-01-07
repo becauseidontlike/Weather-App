@@ -12,25 +12,19 @@ let form = document.querySelector("#form-search");
 form.addEventListener("submit", search);
 
 function showT(response) {
-  console.log(response);
-  console.log(response.data);
-  console.log(response.data.wind.speed);
-  console.log(response.data.main.humidity);
-  console.log(response.data.weather[0].description);
-  let opis = response.data.weather[0].description;
-  let wind = Math.round(response.data.wind.speed);
-  let rainy = response.data.main.humidity;
-  let tempC = Math.round(response.data.main.temp);
   let description = document.querySelector(".current");
   let windy = document.querySelector(".speed");
   let rain = document.querySelector(".humid");
   let h2 = document.querySelector(".actualTemp");
   let current = document.querySelector("h1");
-  description.innerHTML = `${opis}`;
-  windy.innerHTML = `${wind}`;
-  rain.innerHTML = `${rainy}`;
-  h2.innerHTML = `${tempC}℃`;
+  let iconElement = document.querySelector("#icon");
+  description.innerHTML = response.data.weather[0].description;
+  windy.innerHTML = Math.round(response.data.wind.speed);
+  rain.innerHTML = response.data.main.humidity;
+  h2.innerHTML = Math.round(response.data.main.temp);
   current.innerHTML = `${response.data.name}`;
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt",response.data.weather[0].description);
 }
 
 function test(event) {

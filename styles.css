@@ -40,9 +40,10 @@ button {
   border-radius: 5px;
   }
 
-.sunny {
-  font-size: 55px;
-  padding-left: 10px;
+.actualTemp{
+  font-size: 65px;
+  position: relative;
+  top: 5px;
 }
 
 .other {
