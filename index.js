@@ -1,7 +1,6 @@
 function handleSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#write-in");
-  console.log(searchInput.value);
   search(searchInput.value);
  }
 
@@ -50,13 +49,10 @@ forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
 }
 
-
 function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=e6c2364656962bdcb16bc352fc42569a&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
-
 
 function showT(response) {
   let description = document.querySelector(".current");
@@ -68,15 +64,12 @@ function showT(response) {
   description.innerHTML = response.data.weather[0].description;
   windy.innerHTML = Math.round(response.data.wind.speed);
   rain.innerHTML = response.data.main.humidity;
-
   celsiusTemp = response.data.main.temp;
-
   h2.innerHTML = Math.round(response.data.main.temp);
   current.innerHTML = `${response.data.name}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt",response.data.weather[0].description);
-  
-  getForecast(response.data.coord);
+    getForecast(response.data.coord);
 }
 
 function showPosition(position) {
@@ -129,7 +122,6 @@ function showFTemp(event){
   let fTemp = (celsiusTemp * 9) / 5 + 32;
   CTemp.innerHTML = Math.round(fTemp);
 }
-
 
 function showCTemp(event){
   event.preventDefault();
