@@ -13,6 +13,7 @@ h2 {
 
 ul {
   list-style: none;
+  padding: 0px;
 }
 
 body {
@@ -39,6 +40,10 @@ button {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/060/751/original/billy-huynh-v9bnfMCyKbg-unsplash.jpg?1672414708");
   border-radius: 5px;
   }
+
+.bold {
+  font-weight: 600;
+}
 
 .actualTemp {
   font-size: 65px;
