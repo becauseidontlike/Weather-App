@@ -16,25 +16,34 @@ function search(city) {
 
 search("Krakow");
 
+function formatDay(timestamp) {
+let date = new Date(timestamp * 1000);
+let day2 = date.getDay();
+let days = [
+  "SUN",
+  "MON",
+  "TUE",
+  "WED",
+  "THU",
+  "FRI",
+  "SAT"
+];
+return days[day2];
+}
+
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+let forecast = response.data.daily;
 let forecastElement = document.querySelector(".forecast");
 let forecastHTML =`<div class="row">`;
-let days = [
-  "SUNDAY",
-  "MONDAY",
-  "TUESDAY",
-  "WEDNESDAY",
-  "THURSDAY",
-  "FRIDAY",
-  "SATURDAY"
-];
-days.forEach(function (day) {
+
+forecast.forEach(function (forecastDay, index) {
+  if (index !== 0 && index < 7) {
   forecastHTML = forecastHTML + `<div class="col-2">
-          <li class="day">${day}<br /><img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather" id="#"></img></i><br />
-          <li class="temp"><span class="celForcTemp">11</span>℃ | <span class="farForcTemp">11</span>℉</li>
+          <li class="day">${formatDay(forecastDay.dt)}<br /><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="weather" id="#"></img></i><br />
+          <li class="temp"><span class="celForcTemp">max ${Math.round(forecastDay.temp.max)}</span>℃ | <span class="farForcTemp">min ${Math.round(forecastDay.temp.min)}</span>℃</li>
           </li>
-        </div>`;
+        </div>`;}
 });
 
 forecastHTML = forecastHTML + `</div>`;
