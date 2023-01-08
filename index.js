@@ -1,16 +1,20 @@
-function search(event) {
+function handleSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#write-in");
-  let h1 = document.querySelector("h1");
-
-  if (searchInput.value) {
-    h1.innerHTML = `${searchInput.value}`;
-  }
-}
-
+  console.log(searchInput.value);
+  search(searchInput.value);
+ }
 
 let form = document.querySelector("#form-search");
-form.addEventListener("submit", search);
+form.addEventListener("submit", handleSearch);
+
+function search(city) {
+  let apiKey = "8fce6cea2c137d0262b10c9613860590";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=8fce6cea2c137d0262b10c9613860590`;
+  axios.get(apiUrl).then(showT);
+}
+
+search("Krakow");
 
 function showT(response) {
   let description = document.querySelector(".current");
@@ -30,16 +34,6 @@ function showT(response) {
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt",response.data.weather[0].description);
 }
-
-function test(event) {
-  event.preventDefault();
-  let apiKey = "8fce6cea2c137d0262b10c9613860590";
-  let city = document.querySelector(".myCity").innerHTML;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=8fce6cea2c137d0262b10c9613860590`;
-  axios.get(apiUrl).then(showT);
-}
-
-form.addEventListener("submit", test);
 
 function showPosition(position) {
   let lat = `${position.coords.latitude}`;
@@ -101,8 +95,8 @@ function showCTemp(event){
   CTemp.innerHTML = Math.round(celsiusTemp);
 }
 
-/*let celsiusTemp = null;
-*/
+let celsiusTemp = null;
+
 let fahrenheitLink = document.querySelector("#fahrenheitT");
 fahrenheitLink.addEventListener("click", showFTemp);
 
