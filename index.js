@@ -16,6 +16,33 @@ function search(city) {
 
 search("Krakow");
 
+function displayForecast() {
+let forecastElement = document.querySelector(".forecast");
+let forecastHTML =`<div class="row">`;
+let days = [
+  "SUNDAY",
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+  "SATURDAY"
+];
+days.forEach(function (day) {
+  forecastHTML = forecastHTML + `<div class="col-2">
+          <li class="day">${day}<br /><img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather" id="#"></img></i><br />
+          <li class="temp"><span class="celForcTemp">11</span>℃ | <span class="farForcTemp">11</span>℉</li>
+          </li>
+        </div>`;
+});
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
+
 function showT(response) {
   let description = document.querySelector(".current");
   let windy = document.querySelector(".speed");
