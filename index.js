@@ -8,6 +8,7 @@ function search(event) {
   }
 }
 
+
 let form = document.querySelector("#form-search");
 form.addEventListener("submit", search);
 
@@ -21,6 +22,9 @@ function showT(response) {
   description.innerHTML = response.data.weather[0].description;
   windy.innerHTML = Math.round(response.data.wind.speed);
   rain.innerHTML = response.data.main.humidity;
+
+  celsiusTemp = response.data.main.temp;
+
   h2.innerHTML = Math.round(response.data.main.temp);
   current.innerHTML = `${response.data.name}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -78,3 +82,29 @@ let day = days[now.getDay()];
 
 let today = document.querySelector(".today");
 today.innerHTML = `${day}`;
+
+function showFTemp(event){
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let CTemp = document.querySelector(".actualTemp");
+  let fTemp = (celsiusTemp * 9) / 5 + 32;
+  CTemp.innerHTML = Math.round(fTemp);
+}
+
+
+function showCTemp(event){
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let CTemp = document.querySelector(".actualTemp");
+  CTemp.innerHTML = Math.round(celsiusTemp);
+}
+
+/*let celsiusTemp = null;
+*/
+let fahrenheitLink = document.querySelector("#fahrenheitT");
+fahrenheitLink.addEventListener("click", showFTemp);
+
+let celsiusLink = document.querySelector("#celsiusT");
+celsiusLink.addEventListener("click", showCTemp);

@@ -25,12 +25,12 @@
 
         <div class="row align-items-start">
             <div class="col-3">
-                <h1 class="myCity">Krakow</h1>
+                <h1 class="myCity"></h1>
             </div>
             <div class="col-5">
                 <form action="" id="form-search">
                     <input class="form-control" type="text" placeholder="City" aria-label="default input example"
-                        id="write-in">
+                        id="write-in" autocomplete="off">
             </div>
             <div class="col-2"><button type="submit" class="btn btn-outline-light" id="searching-city">Search</button>
             </div>
@@ -45,7 +45,7 @@
             <div class="col-8">
                 <div>
                     <div class="today">
-                        THURSDAY</div>TIME: <span class="time"> 14:<span class="min">00</span></span><br /><span
+                        THURSDAY</div>LAST UPDATED: <span class="time"> 14:<span class="min">00</span></span><br /><span
                         class="current">CURRENT
                         WEATHER</span>
                     <br />
@@ -62,7 +62,10 @@
                 <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather" id="icon"></img>
             </div>
             <div class="col-4">
-                <h2><span class="actualTemp">17</span>℃</h2>
+                <h2><span class="units"><span class="actualTemp" id="celsius">17</span><a href="#" id="celsiusT"
+                            class="active active2">℃</a> |
+                        <a href="#" id="fahrenheitT" class="active2">℉</a></span>
+                </h2>
             </div>
         </div>
 

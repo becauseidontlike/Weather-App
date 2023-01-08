@@ -40,10 +40,23 @@ button {
   border-radius: 5px;
   }
 
-.actualTemp{
+.actualTemp {
   font-size: 65px;
   position: relative;
   top: 5px;
+}
+
+.active2 {
+ text-decoration: none;
+}
+
+.active {
+  color: rgb(5, 9, 34);
+  text-decoration: none;
+}
+
+.units {
+  font-size: 20px;
 }
 
 .other {
